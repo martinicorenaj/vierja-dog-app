@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const Filter=({showFilter, handleSearchChange})=>
+<div>
+  <p>filtro de raza</p>
+  <input value={showFilter}
+         onChange={handleSearchChange}
+  />
+</div>
+
+const Breeds=({filterRaza})=>
+<div>
+  <ul>
+    {filterRaza.map(r=>
+    <li key={r}>
+     {r}
+    </li>
+    )}
+  </ul>
+</div>
+
+
+const App = () => {
+  const [breeds,setBreeds]=useState([])
+  const [dogs, setDogs]=useState([])
+  const [myTeam,setMyTeam]=useState([])
+  const [showFilter, setShowFilter]=useState('')
+
+  useEffect (()=>{
+    axios
+         .get('https://dog.ceo/api/breeds/list/all')
+         .then(response=>{
+          setBreeds(response.data.message)
+         })
+  },[])
+console.log('render',breeds)
+  
+const nombresRazas=Object.keys(breeds)
+
+const handleSearchChange = (event)=>{
+  setShowFilter(event.target.value)
+}
+const filterRaza=nombresRazas.filter(r=>r.includes(showFilter))
+  return (<div>
+    <Filter handleSearchChange={handleSearchChange} showFilter={showFilter}/>
+    <Breeds filterRaza={filterRaza}/>
+  </div>
+  )
 }
 
-export default App;
+export default App
