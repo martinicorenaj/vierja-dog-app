@@ -5,6 +5,7 @@ import DogsByBreed from './modules/DogsByBreed'
 import Filter from './modules/Filter'
 import Breeds from './modules/Breeds'
 import axios from 'axios'
+import {BrowserRouter as Router, Switch,Route,Link} from 'react-router-dom'
 
 
 
@@ -65,14 +66,37 @@ const currentBreed= dogs.slice(indexOfFirstBreed, indexOfLastBreed)
 const paginate=(pageNumber)=> setCurrentPage(pageNumber)
 
 return (
+  <Router>
 <div>
-    <Filter handleSearchChange={handleSearchChange} showFilter={showFilter}/>
-    <Breeds filterRaza={filterRaza} breedToShow={breedToShow} setBreedToShow={setBreedToShow}/>
+<nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/breeds">Breeds</Link>
+            </li>
+            <li>
+              <Link to="/myteam">MyTeam</Link>
+            </li>
+          </ul>
+        </nav>
+<Switch>
+    <Route path='/myteam'>
     <DisplayMyTeam myTeam={myTeam} setMyTeam={setMyTeam} />
+    </Route>
+    <Route path='/breeds/:raza'>
     <DogsByBreed dogs={currentBreed} breedToShow={breedToShow} addDog={addDog} myTeam={myTeam}/>
     <Pagination breedPerPage={breedPerPage} totalBreed={dogs.length} paginate={paginate}/>  
+    </Route>
+    <Route path='/'>
+    <Filter handleSearchChange={handleSearchChange} showFilter={showFilter}/>
+    <Breeds filterRaza={filterRaza} breedToShow={breedToShow} setBreedToShow={setBreedToShow}/>
+    </Route>
+</Switch>
   </div>
 
+  </Router>
   )
 }
 
