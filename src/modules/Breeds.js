@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
       <ul>
         {filterRaza.map(r=>
         <li key={r}>
-          <Link to={`breeds/${r}`}>
+          <Link to={`/breeds/${r}`}>
          {r}
          </Link>
          <button onClick={()=>{
