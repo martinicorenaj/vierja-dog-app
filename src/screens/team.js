@@ -1,13 +1,13 @@
-import React, {useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
+
 import DisplayMyTeam from '../modules/DisplayMyTeam'
 
 const MyTeam = () => {
-    const [myTeam,setMyTeam]=useState([])
-    const {team}=useParams()
-    console.log(team)
+    
+    
+
     return <div>
-        <DisplayMyTeam myTeam={myTeam} setMyTeam={setMyTeam} />
+        <DisplayMyTeam />
     </div>
 }
 

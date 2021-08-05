@@ -55,7 +55,7 @@ const App = () => {
           <Route path="/breeds/:raza">
             <Breed />
           </Route>
-          <Route path="/myTeam/:team">
+          <Route path="/myTeam">
             <Team />
           </Route>
           <Route path="/">

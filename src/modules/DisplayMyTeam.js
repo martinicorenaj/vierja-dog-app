@@ -1,12 +1,18 @@
 import React from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import { removeDogFromMyteam } from '../reducers/myTeamReducer'
 
-const DisplayMyTeam=({myTeam,setMyTeam})=>{
+
+const DisplayMyTeam=()=>{
+  const myTeam=useSelector(state=>state.myTeam)
+  const dispatch=useDispatch()
 
   const breedsInMyTeam=myTeam.map(perro=>
     perro.breed
     
   )
   let uniqueBreeds = [...new Set(breedsInMyTeam)]
+  debugger
   console.log(uniqueBreeds)
   console.log(breedsInMyTeam)
   return (
@@ -23,8 +29,8 @@ const DisplayMyTeam=({myTeam,setMyTeam})=>{
       
       <img src={dog.photo} alt="dog img"width='200'height='200' />
       <p><button onClick={()=>{ 
-        const dogsFiltered=myTeam.filter(perro=>perro!==dog)
-        setMyTeam(dogsFiltered)
+        
+        dispatch(removeDogFromMyteam(dog))
         console.log('borrando',{dog})  
     }
       }>
