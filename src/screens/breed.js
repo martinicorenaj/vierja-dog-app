@@ -12,7 +12,7 @@ const Breed = () => {
     const [dogs,setDogs]=useState([])
     const [breedPerPage]=useState(10)
     const [currentPage, setCurrentPage]=useState(1)
-    const [myTeam,setMyTeam]=useState([])
+    
     
     
     const breedToShow=useSelector(state=>state.breedToShow) 
@@ -28,28 +28,20 @@ const Breed = () => {
                    })
                  },[breedToShow])
 
-    const addDog=(d)=>{
-  
-        const dogObject={
-            photo:d,
-            breed:breedToShow
-        }
-        setMyTeam(myTeam.concat(dogObject))
-                  
-    }
+    
     //pagination 
     const indexOfLastBreed=currentPage*breedPerPage
     const indexOfFirstBreed=indexOfLastBreed-breedPerPage
     const currentBreed= dogs.slice(indexOfFirstBreed, indexOfLastBreed)
     //change page
-    const paginate =(pageNumber)=> setCurrentPage(pageNumber)
-
+    const paginate = number => setCurrentPage(number);
+    debugger
     return <div>
         <Link to={`/myTeam`}>
          ir a my team
          </Link>
-        <DogsByBreed dogs={currentBreed} addDog={addDog} myTeam={myTeam}/>
-        <Pagination breedPerPage={breedPerPage} totalBreed={dogs.length} paginate={paginate} breed={breedToShow}/>  
+        <DogsByBreed dogs={currentBreed} />
+        <Pagination breedPerPage={breedPerPage} totalBreed={dogs.length} paginate={paginate} />  
     </div>
 }
 

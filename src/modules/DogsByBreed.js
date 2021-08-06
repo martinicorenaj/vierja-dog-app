@@ -27,7 +27,7 @@ const DogsByBreed=({dogs})=>{
           console.log('eligiendo candidato a my team',{myTeam})
         
           dispatch(addDogToMyTeam(d,breedToShow))
-          debugger
+      
           }
           else {
           return (window.alert('too many dogs in my Team, please erase one'))
