@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { addDogToMyTeam } from '../reducers/myTeamReducer'
-
+import './dogsByBreed.css'
 
 
 const DogsByBreed=({dogs})=>{
@@ -12,12 +12,14 @@ const DogsByBreed=({dogs})=>{
   
     if (dogs.length>0)
     return (
-      <div>
+      <div> 
         <h3>{breedToShow}</h3>
+      <div className='dog-photo-container'>
+        
         {dogs.map(d =>
           <div key={d}>
-        <img src={d} alt="dog img"width='200'height='200' />
-        <button onClick={()=>{
+        <img src={d} className='Dog-photo' alt="dog img" />
+        <button className='button' onClick={()=>{
          const dogWithSameBreed=myTeam.filter(perro=>perro.breed===breedToShow)
             
          if (dogWithSameBreed.length===3) {
@@ -40,7 +42,7 @@ const DogsByBreed=({dogs})=>{
         </div>
         )}
     </div>
-      
+    </div>
     )
   return (
     <p>elegí raza</p>

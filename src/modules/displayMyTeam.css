@@ -1,0 +1,37 @@
+@media (min-width: 480px) {
+    .Dog-photo {
+        height: 200;
+        width: 200;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+    .button {
+        display:flex;
+        justify-content:center;
+        flex-direction:row
+ }
+     
+} 
+
+@media (min-width:769px) {
+    .Dog-photo {
+        height: 200;
+        width: 200;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+    .button {
+        display:flex;
+        justify-content:center;
+        flex-direction:row
+ }
+
+}

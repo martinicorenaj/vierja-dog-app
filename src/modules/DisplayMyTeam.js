@@ -12,7 +12,7 @@ const DisplayMyTeam=()=>{
     
   )
   let uniqueBreeds = [...new Set(breedsInMyTeam)]
-  debugger
+  
   console.log(uniqueBreeds)
   console.log(breedsInMyTeam)
   return (
@@ -27,11 +27,11 @@ const DisplayMyTeam=()=>{
       <div>
       <div key={dog}>
       
-      <img src={dog.photo} alt="dog img"width='200'height='200' />
+      <img  src={dog.photo} className='Dog-photo' alt="dog img" />
       <p><button onClick={()=>{ 
         
         dispatch(removeDogFromMyteam(dog))
-        console.log('borrando',{dog})  
+       
     }
       }>
       remove from myTeam  
