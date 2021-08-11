@@ -17,9 +17,9 @@ const DogsByBreed=({dogs})=>{
       <div className='dog-photo-container'>
         
         {dogs.map(d =>
-          <div key={d}>
+          <div className='photo-button' key={d}>
         <img src={d} className='Dog-photo' alt="dog img" />
-        <button className='button' onClick={()=>{
+        <button onClick={()=>{
          const dogWithSameBreed=myTeam.filter(perro=>perro.breed===breedToShow)
             
          if (dogWithSameBreed.length===3) {

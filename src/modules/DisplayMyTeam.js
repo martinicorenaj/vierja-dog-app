@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { removeDogFromMyteam } from '../reducers/myTeamReducer'
-
+import './displayMyTeam.css'
 
 const DisplayMyTeam=()=>{
   const myTeam=useSelector(state=>state.myTeam)
@@ -18,14 +18,14 @@ const DisplayMyTeam=()=>{
   return (
   <div>
     <h2>My team</h2>
-    <div>
+    <div className='Dog-photo-container'>
     {uniqueBreeds.map(breed=>{
      const myTeamByBreed=myTeam.filter(d=>d.breed===breed)
      return <div>
        <h1>{breed}</h1>
       { myTeamByBreed.map(dog=>
       <div>
-      <div key={dog}>
+      <div className='photo-button' key={dog}>
       
       <img  src={dog.photo} className='Dog-photo' alt="dog img" />
       <p><button onClick={()=>{ 
