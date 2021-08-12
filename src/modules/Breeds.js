@@ -1,12 +1,12 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setBreedToShow } from '../reducers/breedToShowReducer'
-import { Link } from 'react-router-dom'
 
+
+
+import ItemList from './ItemList'
 
  const Breeds=({filterRaza})=> {
   
-  const dispatch=useDispatch()
+  
   
   
   if (filterRaza.length<10) 
@@ -15,21 +15,7 @@ import { Link } from 'react-router-dom'
       <ul>
         {filterRaza.map(r=>
        
-        <li key={r}>
-          
-         
-         {r}
-
-         
-         <Link to={`/breeds/${r}`}>
-         <button onClick={()=>{
-           dispatch(setBreedToShow(r))
-          }  
-           }>
-          elegir raza
-         </button>
-         </Link>
-        </li>
+        <ItemList breed={r}/>
         )}
       </ul>
     </div>

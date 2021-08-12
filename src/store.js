@@ -3,13 +3,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import filterReducer from './reducers/filterReducer'
 import breedToShowReducer from './reducers/breedToShowReducer'
-
+import dogsReducer from './reducers/dogsReducer'
 import myTeamReducer from './reducers/myTeamReducer'
 
 const reducer = combineReducers({
     breedToShow:breedToShowReducer,
     filter:filterReducer,
     myTeam:myTeamReducer,
+    dogs:dogsReducer,
 })
 
 const store = createStore(
