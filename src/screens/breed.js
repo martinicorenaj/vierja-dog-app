@@ -3,7 +3,6 @@ import { useDispatch, useSelector} from 'react-redux'
 import Pagination from '../components/Pagination'
 import DogsByBreed from '../modules/DogsByBreed'
 
-import axios from 'axios'
 
 import {Link} from 'react-router-dom'
 import { initializeDogs } from '../reducers/dogsReducer'
@@ -19,14 +18,9 @@ const Breed = () => {
     const dispatch=useDispatch()
     
     useEffect (()=>{
-        axios
-              .get(`https://dog.ceo/api/breed/${breedToShow}/images`)
-              .then(response=>{
+               dispatch(initializeDogs(breedToShow))
                 
-               dispatch(initializeDogs(response.data.message))
-              
-                   })
-                 },[breedToShow])
+                 },[dispatch])
 
     
     //pagination 
